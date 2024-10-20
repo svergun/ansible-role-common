@@ -12,8 +12,10 @@
 
 - name: "Install Snap Packages"
   community.general.snap:
-    name: "{{ item }}"
+    name: "{{ snap_item }}"
     state: present
   with_items: "{{ common_packages_snap }}"
+  loop_control:
+    loop_var: snap_item
   when: common_packages_snap | length > 0
   become: true
