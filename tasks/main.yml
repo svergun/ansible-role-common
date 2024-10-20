@@ -3,7 +3,7 @@
 
 - name: "Include Tasks Linux"
   ansible.builtin.include_tasks: "{{ item }}"
-  when: ansible_facts['os_family'] == 'Linux'
+  when: ansible_facts.system == 'Linux'
   loop:
     - ./linux/sudoers.yml
     - ./linux/hostname.yml
