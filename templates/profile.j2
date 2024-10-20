@@ -26,4 +26,6 @@ PS1+="${COLOR_GREEN}\w>${COLOR_RESET}"
 PS1+="${COLOR_CYAN}\$(git_branch)${COLOR_RESET}
 ${COLOR_GRAY}╰─${COLOR_RESET} \[\033[1m\]\$(if [[ \$? == 0 ]]; then echo '#'; else echo '> '; fi)\[\033[0m\] "
 
-{% for i in common_profile_config %}{{ i }}{% endfor %}
+{% for i in common_profile_config %}
+{{ i }}
+{% endfor %}
