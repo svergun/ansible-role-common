@@ -17,3 +17,9 @@
         update_cache: true
       when: ansible_pkg_mgr == 'apt'
       become: true
+    - name: "Confluent CLI -> install package"
+      ansible.builtin.package:
+        name: "confluent-cli"
+        state: present
+      become: true
+      when: ansible_pkg_mgr == 'apt'
