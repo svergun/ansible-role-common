@@ -1,0 +1,13 @@
+---
+
+- name: "Block Kafka Bin"
+  when: common_kafkabin | bool
+  block:
+    - name: "Kafka Bin -> create working directory"
+      ansible.builtin.file:
+        path: "{{ common_kafkabin_dir }}"
+        state: directory
+        mode: "0755"
+        owner: "{{ common_kafkabin_user }}"
+        group: "{{ common_kafkabin_group }}"
+      become: true

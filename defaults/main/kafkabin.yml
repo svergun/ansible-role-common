@@ -1,0 +1,9 @@
+---
+
+common_kafkabin: false
+common_kafkabin_ver: "3.8.0"
+common_kafkabin_scala_ver: "2.13"
+common_kafkabin_src: "https://downloads.apache.org/kafka/{{ common_kafkabin_ver }}/kafka_{{ common_kafkabin_scala_ver }}-{{ common_kafkabin_ver }}.tgz"
+common_kafkabin_dir: "/opt/kafka"
+common_kafkabin_bin_user: "{{ ansible_user }}"
+common_kafkabin_bin_group: "{{ ansible_user }}"
