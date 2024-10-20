@@ -4,7 +4,7 @@
 - name: "Configure Sudoers"
   ansible.builtin.template:
     src: sudoers.j2
-    dest: "{{ common_sudoers_dir }}/{{ common_sudoers_file }}"
+    dest: "{{ common_sudoers_file }}"
     validate: 'visudo -cf %s'
     mode: '0644'
   when: common_sudoers_config | length > 0
