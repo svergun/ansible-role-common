@@ -1,0 +1,5 @@
+---
+
+common_profile_dir: "/etc/profile.d"
+common_profile_file: "profile.sh"
+common_profile_config: []

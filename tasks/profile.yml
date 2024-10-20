@@ -1,0 +1,8 @@
+---
+
+- name: "Set Profile Configuration"
+  ansible.builtin.template:
+    src: profile.j2
+    dest: "{{ common_profile_dir }}/{{ common_profile_file }}"
+    mode: '0644'
+  when: common_profile_config | length > 0
