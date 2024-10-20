@@ -26,8 +26,8 @@
         state: link
         owner: "{{ common_kafkabin_user }}"
         group: "{{ common_kafkabin_group }}"
-        loop_control:
-          loop_var: link_item
+      loop_control:
+        loop_var: link_item
     - name: "Kafka Bin -> update profile"
       ansible.builtin.lineinfile:
         path: "{{ line_item.file }}"
@@ -40,7 +40,7 @@
     - name: "Kafka Bin -> create user Configuration"
       ansible.builtin.copy:
         content: |
-          "{{ item.config }}"
+          {{ item.config }}
         dest: "{{ common_kafkabin_dir }}/current/config/{{ item.file }}"
         mode: "0644"
         owner: "{{ common_kafkabin_user }}"
