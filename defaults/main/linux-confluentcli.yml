@@ -2,3 +2,5 @@
 
 common_confluentcli: false
 common_confluentcli_apt_key: "https://packages.confluent.io/confluent-cli/deb/archive.key"
+common_confluentcli_apt_repo: "deb https://packages.confluent.io/confluent-cli/deb stable main"
+common_confluentcli_apt_repo_file: "confluent-cli"

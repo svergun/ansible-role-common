@@ -9,3 +9,11 @@
         state: present
       when: ansible_pkg_mgr == 'apt'
       become: true
+    - name: "Confluent CLI -> add apt repository"
+      ansible.builtin.apt_repository:
+        repo: "{{ common_confluentcli_apt_repo }}"
+        state: present
+        filename: "{{ common_confluentcli_apt_repo_file }}"
+        update_cache: true
+      when: ansible_pkg_mgr == 'apt'
+      become: true
