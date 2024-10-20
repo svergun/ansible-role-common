@@ -9,3 +9,11 @@
     loop_var: package_item
   become: true
   when: common_packages | length > 0 or common_packages_custom | length > 0
+
+- name: "Install Snap Packages"
+  community.general.snap:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ common_packages_snap }}"
+  when: common_packages_snap | length > 0
+  become: true
