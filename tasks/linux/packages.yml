@@ -4,7 +4,7 @@
   ansible.builtin.package:
     name: "{{ package_item }}"
     state: present
-  loop: "{{ common_packages + common_packages_custom }}"
+  with_items: "{{ common_packages + common_packages_custom }}"
   loop_control:
     loop_var: package_item
   become: true
