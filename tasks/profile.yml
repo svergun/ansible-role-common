@@ -30,5 +30,5 @@
   ansible.builtin.blockinfile:
     path: "{{ common_profile_usr_file }}"
     block: |
-      "{{ common_profile_usr_config }}"
+      {{ common_profile_usr_config }}
   when: common_profile_usr_config | length > 0
