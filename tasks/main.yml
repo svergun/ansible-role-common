@@ -3,4 +3,5 @@
 - name: "Include Tasks"
   include_tasks: "{{ item }}"
   loop:
+    - sudoers.yml
     - hostname.yml
