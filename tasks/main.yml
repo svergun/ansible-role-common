@@ -10,3 +10,8 @@
     - ./linux/profile.yml
     - ./linux/packages.yml
     - ./linux/confluentcli.yml
+
+- name: "Include Tasks Custom"
+  ansible.builtin.include_tasks: "{{ item }}"
+  loop:
+    - kafkabin.yml
