@@ -1,0 +1,4 @@
+---
+
+common_confluentcli: false
+common_confluentcli_apt_key: "https://packages.confluent.io/confluent-cli/deb/archive.key"
