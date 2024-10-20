@@ -5,3 +5,4 @@
   loop:
     - sudoers.yml
     - hostname.yml
+    - profile.yml
