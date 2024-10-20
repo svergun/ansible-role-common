@@ -1,6 +1,4 @@
-# Configure sudoers using /etc/sudoers.d
-###############################################################################
-
+# This task is responsible for configuring sudoers file
 ---
 
 - name: "Configure Sudoers"

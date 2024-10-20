@@ -2,4 +2,4 @@
 
 common_sudoers_dir: "/etc/sudoers.d"
 common_sudoers_file: "sudoers"
-common_sudoers_config: []
+common_sudoers_config: ""

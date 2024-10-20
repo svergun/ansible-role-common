@@ -1,7 +1,8 @@
+# This file includes all the tasks that are to be executed by the role.
 ---
 
 - name: "Include Tasks"
-  include_tasks: "{{ item }}"
+  ansible.builtin.include_tasks: "{{ item }}"
   loop:
     - sudoers.yml
     - hostname.yml

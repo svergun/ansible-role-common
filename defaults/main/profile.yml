@@ -1,5 +1,8 @@
 ---
 
-common_profile_dir: "/etc/profile.d"
-common_profile_file: "profile.sh"
-common_profile_config: []
+common_profile_glb_file: "/etc/profile.d/profile.sh"
+common_profile_glb_config: ""
+
+common_profile_usr_reset: false
+common_profile_usr_file: ""
+common_profile_usr_config: ""

@@ -1,6 +1,7 @@
+# This task sets the hostname of the target machine.
 ---
 
 - name: "Set Linux Hostname"
-  hostname:
+  ansible.builtin.hostname:
     name: "{{ common_hostname }}"
   when: common_hostname is defined

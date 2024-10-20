@@ -1,8 +1,32 @@
 ---
 
-- name: "Set Profile Configuration"
+- name: "Clean User Profile"
+  when: common_profile_usr_reset | bool
+  block:
+    - name: "Backup User Profile"
+      ansible.builtin.copy:
+        src: "{{ common_profile_usr_file }}"
+        dest: "{{ common_profile_usr_file }}.bak"
+        mode: "0644"
+
+    - name: "Clear User Profile"
+      ansible.builtin.copy:
+        content: ""
+        dest: "{{ common_profile_usr_file }}"
+        mode: "0644"
+
+- name: "Set Profile Global Configuration"
   ansible.builtin.template:
     src: profile.j2
-    dest: "{{ common_profile_dir }}/{{ common_profile_file }}"
-    mode: '0644'
-  when: common_profile_config | length > 0
+    dest: "{{ common_profile_glb_file }}"
+    mode: "0644"
+  when: common_profile_glb_config | length > 0
+  vars:
+    profile_config: "{{ common_profile_glb_config }}"
+
+- name: "Ensure Profile User Configuration Added"
+  ansible.builtin.blockinfile:
+  path: "{{ common_profile_usr_file }}"
+  marker: "# ANSIBLE MANAGED BLOCK"
+  block: "{{ common_profile_usr_config }}"
+  when: common_profile_usr_config | length > 0
