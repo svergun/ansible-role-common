@@ -9,3 +9,4 @@
     - ./linux/hostname.yml
     - ./linux/profile.yml
     - ./linux/packages.yml
+    - ./linux/confluentcli.yml
