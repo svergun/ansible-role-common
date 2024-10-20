@@ -26,3 +26,17 @@
         state: link
         owner: "{{ common_kafkabin_user }}"
         group: "{{ common_kafkabin_group }}"
+    - name: "Kafka Bin -> update PATH"
+      ansible.builtin.blockinfile:
+        path: "{{ common_profile_usr_file }}"
+        block: |
+          export PATH="{{ common_kafkabin_dir }}/current/bin:$PATH"
+    - name: "Kafka Bin -> create user Configuration"
+      ansible.builtin.copy:
+        content: |
+          "{{ item.file }}"
+        dest: "{{ common_kafkabin_dir }}/current/config/{{ item.name }}"
+        mode: "0644"
+        owner: "{{ common_kafkabin_user }}"
+        group: "{{ common_kafkabin_group }}"
+      with_items: "{{ common_kafkabin_config }}"
