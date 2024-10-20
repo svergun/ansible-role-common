@@ -11,3 +11,9 @@
         owner: "{{ common_kafkabin_user }}"
         group: "{{ common_kafkabin_group }}"
       become: true
+    - name: "Kafka Bin -> download kafka"
+      ansible.builtin.unarchive:
+        src: "{{ common_kafkabin_src }}"
+        dest: "{{ common_kafkabin_dir }}"
+        remote_src: true
+        creates: "{{ common_kafkabin_dir }}/kafka_{{ common_kafkabin_scala_ver }}-{{ common_kafkabin_ver }}"
