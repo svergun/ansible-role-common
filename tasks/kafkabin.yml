@@ -40,3 +40,6 @@
         owner: "{{ common_kafkabin_user }}"
         group: "{{ common_kafkabin_group }}"
       with_items: "{{ common_kafkabin_config }}"
+      loop_control:
+        label: "{{ item.file }}"
+      no_log: true
