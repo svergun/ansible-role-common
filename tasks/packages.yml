@@ -1,0 +1,10 @@
+---
+
+- name: "Install Packages"
+  ansible.builtin.package:
+    name:
+      - "{{ common_packages }}"
+      - "{{ common_packages_custom }}"
+    state: present
+  become: true
+  when: common_packages | length > 0 or common_packages_custom | length > 0
