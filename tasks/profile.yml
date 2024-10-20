@@ -26,7 +26,7 @@
 
 - name: "Ensure Profile User Configuration Added"
   ansible.builtin.blockinfile:
-  path: "{{ common_profile_usr_file }}"
-  marker: "# ANSIBLE MANAGED BLOCK"
-  block: "{{ common_profile_usr_config }}"
+    path: "{{ common_profile_usr_file }}"
+    marker: "# ANSIBLE MANAGED BLOCK"
+    block: "{{ common_profile_usr_config }}"
   when: common_profile_usr_config | length > 0
