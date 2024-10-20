@@ -1,7 +1,7 @@
 ---
 
 - name: "Confluent CLI Block"
-  when: confluent_cli | bool
+  when: confluentcli | bool
   block:
     - name: "Confluent CLI -> add apt key"
       ansible.builtin.apt_key:
