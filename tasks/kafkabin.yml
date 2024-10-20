@@ -26,13 +26,17 @@
         state: link
         owner: "{{ common_kafkabin_user }}"
         group: "{{ common_kafkabin_group }}"
+        loop_control:
+          loop_var: link_item
     - name: "Kafka Bin -> update profile"
       ansible.builtin.lineinfile:
-        path: "{{ item.file }}"
-        line: "{{ item.line }}"
-        insertafter: "{{ item.after }}"
+        path: "{{ line_item.file }}"
+        line: "{{ line_item.line }}"
+        insertafter: "{{ line_item.after }}"
       with_items:
         - "{{ common_kafkabin_profile }}"
+      loop_control:
+        loop_var: line_item
     - name: "Kafka Bin -> create user Configuration"
       ansible.builtin.copy:
         content: |
