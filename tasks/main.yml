@@ -1,4 +1,6 @@
 ---
 
-- include_tasks: "{{ role_action }}.yml"
-  when: role_action is defined
+- name: "Include Tasks"
+  include_tasks: "{{ item }}"
+  loop:
+    - hostname.yml
