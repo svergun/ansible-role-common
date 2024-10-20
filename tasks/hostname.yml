@@ -5,3 +5,4 @@
   ansible.builtin.hostname:
     name: "{{ common_hostname }}"
   when: common_hostname is defined
+  become: true

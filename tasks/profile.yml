@@ -8,6 +8,7 @@
         src: "{{ common_profile_usr_file }}"
         dest: "{{ common_profile_usr_file }}.bak"
         mode: "0644"
+        remote_src: true
 
     - name: "Clear User Profile"
       ansible.builtin.copy:
@@ -23,6 +24,7 @@
   when: common_profile_glb_config | length > 0
   vars:
     profile_config: "{{ common_profile_glb_config }}"
+  become: true
 
 - name: "Ensure Profile User Configuration Added"
   ansible.builtin.blockinfile:
@@ -30,3 +32,4 @@
     marker: "# ANSIBLE MANAGED BLOCK"
     block: "{{ common_profile_usr_config }}"
   when: common_profile_usr_config | length > 0
+  become: true
