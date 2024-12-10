@@ -6,6 +6,7 @@
   when: ansible_facts.system == 'Linux'
   loop:
     - ./linux/sudoers.yml
+    - ./linux/ssh.yml
     - ./linux/hostname.yml
     - ./linux/profile.yml
     - ./linux/packages.yml

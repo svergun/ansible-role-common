@@ -1,5 +1,16 @@
 ---
 
+# - name: "Block APT Package Manager"
+#   when: ansible_pkg_mgr == "apt"
+#   block:
+#     - name: "APT Package Manager -> add key"
+#       ansible.builtin.apt_key:
+#         url: "{{ common_packages_mgr_config }}"
+#         state: present
+#       when: ansible_pkg_mgr == 'apt'
+#       become: true
+
+
 - name: "Install Packages"
   ansible.builtin.package:
     name: "{{ package_item }}"
