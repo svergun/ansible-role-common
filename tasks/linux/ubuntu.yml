@@ -1,0 +1,13 @@
+---
+
+- name: "Block to customise Ubuntu Linux"
+  when: common_ubuntu_dconf | length > 0
+  block:
+    - name: "Customise Dconf Database"
+      with_items: "{{ common_ubuntu_dconf }}"
+      loop_control:
+        loop_var: "dconf"
+      community.general.dconf:
+        key: "{{ dconf.key }}"
+        value: "{{ dconf.value }}"
+        state: "{{ dconf.state }}"
