@@ -1,13 +1,19 @@
 ---
 
-- name: "Block to customise Ubuntu Linux"
+- name: "Customise Dconf Database"
   when: common_ubuntu_dconf | length > 0
-  block:
-    - name: "Customise Dconf Database"
-      with_items: "{{ common_ubuntu_dconf }}"
-      loop_control:
-        loop_var: "dconf"
-      community.general.dconf:
-        key: "{{ dconf.key }}"
-        value: "{{ dconf.value }}"
-        state: "{{ dconf.state }}"
+  with_items: "{{ common_ubuntu_dconf }}"
+  loop_control:
+    loop_var: "dconf"
+  community.general.dconf:
+    key: "{{ dconf.key }}"
+    value: "{{ dconf.value }}"
+    state: "{{ dconf.state }}"
+
+- name: "Install Ubuntu Packages from the Internet"
+  when: common_ubuntu_packages | length > 0
+  with_items: "{{ common_ubuntu_packages }}"
+  loop_control:
+    loop_var: "package"
+  ansible.builtin.apt:
+    deb: "{{ package }}"
