@@ -2,8 +2,7 @@
 
 - name: "Deploy SSH Keys"
   when: common_ssh_keys | length > 0
-  loop:
-    - "{{ common_ssh_keys }}"
+  with_items: "{{ common_ssh_keys }}"
   loop_control:
     loop_var: "ssh"
   ansible.posix.authorized_key:
