@@ -10,6 +10,26 @@
     value: "{{ dconf.value }}"
     state: "{{ dconf.state }}"
 
+- name: "Sleep Configuration"
+  when: common_ubuntu_sleep_conf | length > 0
+  block:
+    - name: "Create Sleep Systemd Directory"
+      ansible.builtin.file:
+        path: "{{ common_ubuntu_sleep_conf_dir }}"
+        state: directory
+        mode: "0755"
+        owner: "root"
+        group: "root"
+      become: true
+    - name: "Create Sleep Config"
+      ansible.builtin.template:
+        src: sleep.j2
+        dest: "{{ common_ubuntu_sleep_conf_dir }}/{{ common_ubuntu_sleep_conf_file }}"
+        mode: "0644"
+        owner: "root"
+        group: "root"
+      become: true
+
 - name: "Install Ubuntu Packages from the Internet"
   when: common_ubuntu_packages | length > 0
   with_items: "{{ common_ubuntu_packages }}"

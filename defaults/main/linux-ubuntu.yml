@@ -1,4 +1,9 @@
 ---
 
 common_ubuntu_dconf: []
+
 common_ubuntu_packages: []
+
+common_ubuntu_sleep_conf_dir: "/etc/systemd/sleep.conf.d"
+common_ubuntu_sleep_conf_file: "00-sleep.conf"
+common_ubuntu_sleep_conf: ""
