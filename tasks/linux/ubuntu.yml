@@ -15,5 +15,6 @@
   with_items: "{{ common_ubuntu_packages }}"
   loop_control:
     loop_var: "package"
+  become: true
   ansible.builtin.apt:
     deb: "{{ package }}"
