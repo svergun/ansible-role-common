@@ -38,3 +38,14 @@
   become: true
   ansible.builtin.apt:
     deb: "{{ package }}"
+
+- name: "Uninstall and Purge Ubuntu Packages"
+  when: common_ubuntu_packages_remove | length > 0
+  with_items: "{{ common_ubuntu_packages_remove }}"
+  loop_control:
+    loop_var: "package"
+  become: true
+  ansible.builtin.apt:
+    name: "{{ package }}"
+    state: absent
+    purge: true
